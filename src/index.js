@@ -3,6 +3,7 @@ import 'dotenv/config'
 const resumeRoute = require('./route/resumeRoute');
 const app = express();
 import models, {sequelize} from './model/config';
+import { routes } from './route/routes';
 
 app.use(express.json());
 
@@ -13,7 +14,7 @@ app.use(async (req, res, next) => {
     next();
   })
 
-app.use('/', resumeRoute);
+app.use('/resume', routes.resumeRoute);
 
 const eraseDatabaseOnSync = process.env.ERASE_DATABASE_ON_SYNC;
 
